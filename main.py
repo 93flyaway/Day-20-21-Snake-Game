@@ -32,7 +32,9 @@ while is_game_on:
         snake.extend_segment()
     if snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 290 or snake.head.ycor() < -290 or\
             snake.is_looped():
-        is_game_on = False
-        scoreboard.game_over()
+        scoreboard.reset()
+        snake.reset()
+        # is_game_on = False
+        # scoreboard.game_over()
 
 screen.exitonclick()
