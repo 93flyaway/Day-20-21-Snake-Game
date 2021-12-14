@@ -1,6 +1,7 @@
 from turtle import Turtle
 
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
+GRAVEYARD = (1000, 1000)
 MOVE_DISTANCE = 20
 UP = 90
 DOWN = 270
@@ -28,6 +29,13 @@ class Snake:
     def extend_segment(self):
         new_position = self.snake_body[-1].pos()
         self.create_segment(new_position)
+
+    def reset(self):
+        for segment in self.snake_body:
+            segment.goto(GRAVEYARD)
+        self.snake_body.clear()
+        self.create_snake()
+        self.head = self.snake_body[0]
 
     def move(self):
         for snake_index in range(-1, -len(self.snake_body), -1):
